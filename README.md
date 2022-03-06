@@ -19,25 +19,26 @@ I'm using [stow]() to manage the symlinks.
 
 This is inspired by https://www.youtube.com/watch?v=tkUllCAGs3c
 
-Each folder in this repo will have its contents (files or folders) places as symlink in the home dir.
+Each folder in this repo will have its contents (files and folders) placed as symlink in the home dir.
 
-So if i have a file and folder such as `zsh/.zshrc`, `zsh/.oh-my-zsh/custom` 
+So if i have a file and folder such as `zsh/.zshrc`, `zsh/.oh-my-zsh/custom`
 
-and then run `stow zsh` it will create a symlinks at `~/.zshrc` and `.oh-my-zsh/custom`.
+and then run `stow zsh` it will create symlinks at `~/.zshrc` and `~/.oh-my-zsh/custom`.
 
 ### How to add more stuff
 
-1. Create a folder in this dir
+1. cd into `~/.dotfiles`
+2. Create a folder in `~/.dotfiles`
   ```
-  mkdir vim
+  mkdir ~/.dotfiles/vim
   ```
-2. Move the files related to that in the folder
+3. Move the files related to that in the folder
   ```
   mv ~/.vimrc ~/.dotfiles/vim/
   ```
-3. Then create the symlink with stow
+4. Then create the symlink with stow
   ```
   stow vim
   ```
 
-And you're done.
+✨ And you're done
