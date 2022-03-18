@@ -1,3 +1,7 @@
 [submodule "zsh-autosuggestions"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+
+[submodule "personal"]
+	path = personal
+	url = https://github.com/patheticGeek/dotfiles-personal

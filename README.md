@@ -12,6 +12,11 @@
     cd ~/.dotfiles
     ./install.sh
     ```
+    To install with personal (its a private git repo)
+    ```
+    cd ~/.dotfiles
+    PERSONAL=true ./install.sh
+    ```
 
 ### Some explanation
 
