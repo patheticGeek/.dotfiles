@@ -30,28 +30,21 @@ So if i have a file and folder such as `zsh/.zshrc`, `zsh/.oh-my-zsh/custom`
 
 and then run `stow zsh` it will create symlinks at `~/.zshrc` and `~/.oh-my-zsh/custom`.
 
+The `personal` folder is a submodule, it is a private repo where i have my _personal_ keys and stuff.
+
 ### How to add more stuff
 
-1. cd into `~/.dotfiles`
-2. Create a folder in `~/.dotfiles`
+1. Create a folder in `~/.dotfiles`
     ```
     mkdir ~/.dotfiles/vim
     ```
-3. Move the files related to that in the folder
+2. Move the files related to that in the folder
     ```
     mv ~/.vimrc ~/.dotfiles/vim/
     ```
-4. Then create the symlink with stow
+3. Then create the symlink with stow
     ```
     stow vim
     ```
 
 ✨ And you're done
-
-### One liner
-
-```
-NAME=
-PATH=
-mkdir -p ~/.dotfiles/$NAME/$PATH && mv -t ~/.dotfiles/$NAME/$PATH ~/$PATH
-```
