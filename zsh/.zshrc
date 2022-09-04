@@ -90,12 +90,7 @@ export EDITOR='vim'
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
+# Aliases
 alias zshrc="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 
@@ -105,7 +100,7 @@ export PATH=$PATH:~/go/bin
 export DENO_INSTALL="~/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
-alias fuck="sudo"
+alias fucking="sudo"
 alias please="sudo"
 alias bhaak="clear"
 alias fuckoff="clear"
@@ -115,6 +110,8 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
+export PATH=$PATH:$JAVA_HOME
 export ANDROID_HOME="~/Android/Sdk"
 export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/platform-tools
@@ -130,14 +127,15 @@ alias tailscale-up="sudo systemctl start tailscaled && sudo tailscale up"
 alias lzd='lazydocker'
 alias lzg='lazygit'
 
-alias code.="code . && exit"
+alias c="code"
 
-alias dopzsh="doppler run -- zsh"
-
-alias minecraft="sudo java -jar Downloads/TLauncher-*.jar"
+alias dpzsh="doppler run -- zsh"
+alias dpr="doppler run --"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:/home/geek/.cabal/bin/
+export PATH=$PATH:~/.cabal/bin/
+
+alias minecraft="sudo java -jar Downloads/TLauncher-*.jar"
