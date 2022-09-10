@@ -110,6 +110,8 @@ alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
 
+alias tree='tree -I "node_modules|.next|dist|build"'
+
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
 export PATH=$PATH:$JAVA_HOME
 export ANDROID_HOME="~/Android/Sdk"
