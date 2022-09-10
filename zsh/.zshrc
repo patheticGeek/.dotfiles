@@ -63,14 +63,14 @@ ZSH_THEME="geek"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM="$HOME/.omz-geek"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git deno dnf nvm python vscode docker docker-compose adb zsh-autosuggestions)
+plugins=(git deno dnf nvm python vscode docker docker-compose adb zsh-autosuggestions archlinux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -93,6 +93,7 @@ export ARCHFLAGS="-arch x86_64"
 # Aliases
 alias zshrc="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
+alias dotfiles="code ~/.dotfiles"
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:~/go/bin
