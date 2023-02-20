@@ -106,16 +106,17 @@ alias please="sudo"
 alias bhaak="clear"
 alias fuckoff="clear"
 
+TREE_IGNORE_FOLDER='.git|node_modules|.next|dist|build'
 alias ls='exa -al --color=always --group-directories-first' # preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias lt="exa -aT --color=always --group-directories-first --ignore-glob=\"$TREE_IGNORE_FOLDER\"" # tree listing
 
-alias tree='tree -I "node_modules|.next|dist|build"'
+alias tree="tree -I \"$TREE_IGNORE_FOLDER\""
 
 export JAVA_HOME="/usr/lib/jvm/java-17-openjdk"
 export PATH=$PATH:$JAVA_HOME
-export ANDROID_HOME="~/Android/Sdk"
+export ANDROID_HOME=~/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -142,3 +143,17 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:~/.cabal/bin/
 
 alias minecraft="sudo java -jar Downloads/TLauncher-*.jar"
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+export PATH=/home/geek/.local/share/JetBrains/Toolbox/scripts:$PATH
+
+export PATH=/opt/cuda/bin:$PATH
+export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
+
+# pnpm
+export PNPM_HOME="/home/geek/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
