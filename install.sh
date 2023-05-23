@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-STOW_FOLDERS=${STOW_FOLDERS:=alacritty,fish,kitty,neofetch,others,vim,zsh,tmux}
+STOW_FOLDERS=${STOW_FOLDERS:=alacritty,fish,kitty,neofetch,others,vim,zsh,tmux,gestures}
 
 if [ $PERSONAL ]
 then
