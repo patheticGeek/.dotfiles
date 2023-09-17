@@ -39,19 +39,19 @@ The `personal` folder is a submodule, it is a private repo where i have my _pers
 
 Can do so via `dotfiles [add|delete] FOLDER FILE` command. e.g.
 
-```
+```bash
 # Will add file at correct path to others folder
 dotfiles add others ~/.config/mimeapps.list
 ```
 
-```
+```bash
 # Will remove file from others folder and put it at original path
 dotfiles delete others ~/.config/mimeapps.list
 ```
 
 ### `dotfiles` command help
 
-```
+```bash
 COMMAND
     dotfiles [setup|remove|update] [--folders VALUE] [-p|--personal] [-d|--dry]
     dotfiles add FOLDER FILE
