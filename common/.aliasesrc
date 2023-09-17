@@ -30,3 +30,5 @@ alias dpzsh="doppler run -- zsh"
 alias dpr="doppler run --"
 
 alias minecraft="sudo java -jar Downloads/TLauncher-*.jar"
+
+alias alert='notify-send -i "$([ $? = 0 ] && echo terminal || echo error)" "Terminal needs attention"'

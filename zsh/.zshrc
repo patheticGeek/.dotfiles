@@ -19,20 +19,17 @@ plugins=(git nvm python vscode docker docker-compose adb zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
 bindkey -v
 
-# export MANPATH="/usr/local/man:$MANPATH"
+if [ -f ~/.aliasesrc ]; then
+    source ~/.aliasesrc
+fi
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.utf-8
 
-# Preferred editor
 export EDITOR='vim'
 
-# Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
 export PATH=$PATH:/usr/local/go/bin
@@ -70,5 +67,3 @@ export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
 export PNPM_HOME="~/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
-
-source ~/.aliasesrc
