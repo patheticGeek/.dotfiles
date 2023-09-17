@@ -1,8 +1,8 @@
 # Aliases
 
-alias zshrc="$EDITOR ~/.zshrc"
+alias dotfiles="$HOME/.dotfiles/dotfiles.sh"
 
-alias dotfiles="code ~/.dotfiles"
+alias zshrc="$EDITOR ~/.zshrc"
 
 alias fucking="sudo"
 alias please="sudo"
@@ -13,7 +13,7 @@ TREE_IGNORE_FOLDER='.git|node_modules|.next|dist|build'
 alias ls='exa -al --color=always --group-directories-first' # preferred listing
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
-alias lt="exa -aT --color=always --group-directories-first --ignore-glob=\"$TREE_IGNORE_FOLDER\"" # tree listing
+alias lt="exa -a --color=always --group-directories-first --ignore-glob=\"$TREE_IGNORE_FOLDER\"" # tree listing
 
 alias tree="tree -I \"$TREE_IGNORE_FOLDER\""
 
