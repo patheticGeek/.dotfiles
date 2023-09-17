@@ -99,7 +99,7 @@ _delete() {
 
     # Move the file from dotfiles to correct path
     echo Moving $filePath to $moveTo
-    if [[ -f $filePath ]]; then; rm $moveTo; fi;
+    if [[ -f $filePath ]]; then rm $moveTo; fi;
     mv $filePath $moveTo
 
     # Setup that folder once again
