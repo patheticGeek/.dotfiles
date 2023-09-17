@@ -67,6 +67,9 @@ OPTIONS
     add
         Add an existing FILE. Will move FILE to the FOLDER in dotfiles with correct path and link it.
 
+    delete
+        Stop tracking FILE. Will move the FILE to its location and restow the FOLDER removing the linking.
+
     -h, --help, help
         Will print this.
 
