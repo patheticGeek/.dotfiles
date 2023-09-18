@@ -8,5 +8,5 @@
     "show-indicator-icon": true,
     "show-recent-apps": "8",
     "terminal-command": "kitty",
-    "theme-name": "dark"
+    "theme-name": "geeks-theme"
 }
