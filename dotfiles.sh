@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export STOW_DIR=~/.dotfiles
+
 stowFolders=(common bash alacritty fish kitty neofetch others vim zsh tmux gestures)
 stowFlags=""
 personal=0
@@ -44,7 +46,7 @@ OPTIONS
 _setup() {
     echo Setting up - $stowFolders
 
-    stow $stowFlags --adopt -S $stowFolders
+    stow $stowFlags --adopt --no-folding -S $stowFolders
 
     echo "✨ All done"
 }
@@ -52,7 +54,7 @@ _setup() {
 _remove() {
     echo Removing - $stowFolders
 
-    stow $stowFlags -D $stowFolders
+    stow $stowFlags --no-folding -D $stowFolders
 
     echo "✨ All done"
 }
@@ -60,7 +62,7 @@ _remove() {
 _update() {
     echo Updating - $stowFolders
 
-    stow $stowFlags --adopt -R $stowFolders
+    stow $stowFlags --adopt --no-folding -R $stowFolders
 
     echo "✨ All done"
 }
