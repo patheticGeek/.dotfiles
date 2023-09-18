@@ -46,7 +46,7 @@ OPTIONS
 _setup() {
     echo Setting up - $stowFolders
 
-    stow $stowFlags --adopt --no-folding -S $stowFolders
+    stow $stowFlags --adopt -S $stowFolders
 
     echo "✨ All done"
 }
@@ -54,7 +54,7 @@ _setup() {
 _remove() {
     echo Removing - $stowFolders
 
-    stow $stowFlags --no-folding -D $stowFolders
+    stow $stowFlags -D $stowFolders
 
     echo "✨ All done"
 }
