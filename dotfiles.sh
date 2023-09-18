@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-export STOW_DIR=~/.dotfiles
+export STOW_DIR=$HOME/.dotfiles
 
-stowFolders=(common bash alacritty fish kitty neofetch others vim zsh tmux gestures)
+stowFolders="$(cat dotfiles_folders)"
 stowFlags=""
 personal=0
 
@@ -12,7 +12,7 @@ addFile=
 _help() {
     echo """
 COMMAND
-    dotfiles [setup|remove|update] [--folders VALUE] [-p|--personal] [-d|--dry]
+    dotfiles [setup|remove|update] [-d|--dry]
     dotfiles [add|delete] FOLDER FILE
     dotfiles [-h|--help|help]
 
@@ -31,12 +31,6 @@ OPTIONS
 
     -h, --help, help
         Will print this.
-
-    --folders VALUE
-        Takes a comma seperated list of folders that are to be used.
-
-    -p, --personal 
-        If present setup the personal folder also.
 
     -d, --dry
         If present, this only does a dry run and outputs what will happen.
@@ -77,7 +71,7 @@ _add() {
     if ! [[ -f $addFile ]]; then echo File does not exist && exit 1; fi;
 
     local relativePathToHome=$(realpath --relative-to="$HOME" $addFile)
-    local moveTo=~/.dotfiles/$addFolder/$relativePathToHome
+    local moveTo=$STOW_DIR/$addFolder/$relativePathToHome
 
     # Move the file in the dotfiles
     echo Moving $addFile to $moveTo
@@ -93,10 +87,10 @@ _delete() {
     if [[ -z $addFile ]]; then echo Require the FILE argument && exit 1; fi;
     if [[ -z $addFolder ]]; then echo Require the FOLDER argument && exit 1; fi;
 
-    local filePath=$HOME/.dotfiles/$addFolder/$addFile
+    local filePath=$STOW_DIR/$addFolder/$addFile
     if ! [[ -f $filePath ]]; then echo File does not exist && exit 1; fi;
 
-    local relativePathToHome=$(realpath --relative-to="$HOME/.dotfiles/$addFolder" $filePath)
+    local relativePathToHome=$(realpath --relative-to="$STOW_DIR/$addFolder" $filePath)
     local moveTo=$HOME/$relativePathToHome
 
     # Move the file from dotfiles to correct path
@@ -168,10 +162,6 @@ main() {
             ;;
         esac
     done
-
-    [[ $personal -gt 0 ]] && stowFolders+=(personal)
-
-    stowFolders="${stowFolders[@]}" # Fix iteration shit in bash
 
     # echo Running $fnToRun with folders=$stowFolders flags=$stowFlags addFolder=$addFolder addFile=$addFile
 

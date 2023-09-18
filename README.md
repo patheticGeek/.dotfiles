@@ -14,10 +14,7 @@
    ```
    cd .dotfiles && ./dotfiles.sh setup
    ```
-   To install with personal (its a private git repo for me)
-   ```
-   cd .dotfiles && ./dotfiles.sh setup --personal
-   ```
+   The folders to be used are stored in `dotfiles_folders`. It is a space separated list.
 
 Now `./dotfiles.sh` script will also be available as `dotfiles` as it is aliased in shell.
 
@@ -51,34 +48,4 @@ dotfiles delete others ~/.config/mimeapps.list
 
 ### `dotfiles` command help
 
-```bash
-COMMAND
-    dotfiles [setup|remove|update] [--folders VALUE] [-p|--personal] [-d|--dry]
-    dotfiles add FOLDER FILE
-    dotfiles [-h|--help|help]
-
-DESCRIPTION
-    dotfiles command is supposed to be used to backup and sync your dotfiles using git & stow.
-
-OPTIONS
-    setup, remove, update
-        Pretty self explanatory.
-
-    add
-        Add an existing FILE. Will move FILE to the FOLDER in dotfiles with correct path and link it.
-
-    delete
-        Stop tracking FILE. Will move the FILE to its location and restow the FOLDER removing the linking.
-
-    -h, --help, help
-        Will print this.
-
-    --folders VALUE
-        Takes a comma seperated list of folders that are to be used.
-
-    -p, --personal
-        If present setup the personal folder also.
-
-    -d, --dry
-        If present, this only does a dry run and outputs what will happen.
-```
+Run
