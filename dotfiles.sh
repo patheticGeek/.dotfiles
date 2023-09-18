@@ -68,9 +68,10 @@ createIfNotExists() {
 _add() {
     if [[ -z $addFile ]]; then echo Require the FILE argument && exit 1; fi;
     if [[ -z $addFolder ]]; then echo Require the FOLDER argument && exit 1; fi;
-    if ! [[ -f $addFile ]]; then echo File does not exist && exit 1; fi;
 
     local relativePathToHome=$(realpath --relative-to="$HOME" $addFile)
+    if ! [[ -f $relativePathToHome ]]; then echo File $HOME/$relativePathToHome does not exist && exit 1; fi;
+
     local moveTo=$STOW_DIR/$addFolder/$relativePathToHome
 
     # Move the file in the dotfiles
@@ -88,7 +89,7 @@ _delete() {
     if [[ -z $addFolder ]]; then echo Require the FOLDER argument && exit 1; fi;
 
     local filePath=$STOW_DIR/$addFolder/$addFile
-    if ! [[ -f $filePath ]]; then echo File does not exist && exit 1; fi;
+    if ! [[ -f $filePath ]]; then echo File $filePath does not exist && exit 1; fi;
 
     local relativePathToHome=$(realpath --relative-to="$STOW_DIR/$addFolder" $filePath)
     local moveTo=$HOME/$relativePathToHome
