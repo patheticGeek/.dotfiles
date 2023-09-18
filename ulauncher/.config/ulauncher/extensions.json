@@ -1,0 +1,23 @@
+{
+    "com.github.nortmas.chrome-bookmarks": {
+        "id": "com.github.nortmas.chrome-bookmarks",
+        "url": "https://github.com/nortmas/Chrome-bookmarks",
+        "updated_at": "2023-09-17T15:54:48.399623",
+        "last_commit": "b4598ea1e208cd6feb49574e998721dcc771157f",
+        "last_commit_time": "2021-01-09T15:04:28"
+    },
+    "com.github.beajeanm.ulauncher-windows-switcher": {
+        "id": "com.github.beajeanm.ulauncher-windows-switcher",
+        "url": "https://github.com/beajeanm/ulauncher-windows-switcher",
+        "updated_at": "2023-09-17T15:58:28.678670",
+        "last_commit": "e746afcd1ae971294f983dadb6ad2c90a730ec39",
+        "last_commit_time": "2022-08-04T22:59:46"
+    },
+    "com.github.patheticgeek.ulauncher-custom-scripts": {
+        "id": "com.github.patheticgeek.ulauncher-custom-scripts",
+        "url": "https://github.com/patheticGeek/ulauncher-custom-scripts",
+        "updated_at": "2023-09-18T05:46:30.225301",
+        "last_commit": "86375c619179a5d221d8b0998a657372d0a9e819",
+        "last_commit_time": "2023-09-18T00:16:13"
+    }
+}
