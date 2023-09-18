@@ -2,7 +2,14 @@
 
 export STOW_DIR=$HOME/.dotfiles
 
-stowFolders="$(cat dotfiles_folders)"
+get_stow_folders() {
+    cat dotfiles_folders
+}
+set_stow_folders() {
+    echo ${@} > dotfiles_folders
+}
+
+stowFolders="$(get_stow_folders)"
 stowFlags=""
 personal=0
 
@@ -14,20 +21,27 @@ _help() {
 COMMAND
     dotfiles [setup|remove|update] [-d|--dry]
     dotfiles [add|delete] FOLDER FILE
+    dotfiles [add-folder|delete-folder] FOLDER
     dotfiles [-h|--help|help]
 
 DESCRIPTION
     dotfiles command is supposed to be used to backup and sync your dotfiles using git & stow.
 
 OPTIONS
-    setup, remove, update
+    setup, remove, update [-d|--dry]
         Pretty self explanatory.
 
-    add
+    add FOLDER FILE
         Add an existing FILE. Will move FILE to the FOLDER in dotfiles with correct path and link it.
 
-    delete
+    delete FOLDER FILE
         Stop tracking FILE. Will move the FILE to its location and restow the FOLDER removing the linking.
+
+    add-folder FOLDER
+        Adds FOLDER to dotfiles_folders
+
+    delete-folder FOLDER
+        Delete FOLDER from dotfiles_folders
 
     -h, --help, help
         Will print this.
@@ -56,7 +70,7 @@ _remove() {
 _update() {
     echo Updating - $stowFolders
 
-    stow $stowFlags --adopt --no-folding -R $stowFolders
+    stow $stowFlags --adopt -R $stowFolders
 
     echo "✨ All done"
 }
@@ -65,21 +79,45 @@ createIfNotExists() {
     test -d ${1} || mkdir -p ${1}
 }
 
+addDotfilesFolder() {
+    local dotfilesFolders=$(get_stow_folders)
+    if [[ $dotfilesFolders == *"${1}"* ]];
+    then
+        echo ${1} already presnt in dotfiles_folders
+    else
+        set_stow_folders "$(get_stow_folders) ${1}"
+    fi
+}
+removeDotfilesFolder() {
+    local dotfilesFolders=($(get_stow_folders))
+    local toDelete=${1}
+    set_stow_folders "${dotfilesFolders[@]/$toDelete}"
+}
+_addFolder() {
+    addDotfilesFolder $addFolder
+}
+_deleteFolder() {
+    removeDotfilesFolder $addFolder
+}
+
+
 _add() {
     if [[ -z $addFile ]]; then echo Require the FILE argument && exit 1; fi;
     if [[ -z $addFolder ]]; then echo Require the FOLDER argument && exit 1; fi;
 
     local relativePathToHome=$(realpath --relative-to="$HOME" $addFile)
-    if ! [[ -f $relativePathToHome ]]; then echo File $HOME/$relativePathToHome does not exist && exit 1; fi;
+    local filePath=$HOME/$relativePathToHome
+    if ! [[ -f $filePath ]]; then echo File $filePath does not exist && exit 1; fi;
 
     local moveTo=$STOW_DIR/$addFolder/$relativePathToHome
 
     # Move the file in the dotfiles
-    echo Moving $addFile to $moveTo
+    echo Moving $filePath to $moveTo
     createIfNotExists $(dirname $moveTo)
-    mv $addFile $moveTo
+    mv $filePath $moveTo
 
     # Setup that folder to link the file
+    addDotfilesFolder $addFolder
     stowFolders=($(echo $addFolder))
     _setup
 }
@@ -95,11 +133,12 @@ _delete() {
     local moveTo=$HOME/$relativePathToHome
 
     # Move the file from dotfiles to correct path
+    if [[ -f $filePath ]]; then echo Deleting $moveTo; rm $moveTo; fi;
     echo Moving $filePath to $moveTo
-    if [[ -f $filePath ]]; then rm $moveTo; fi;
     mv $filePath $moveTo
 
     # Setup that folder once again
+    removeDotfilesFolder $addFolder
     stowFolders=($(echo $addFolder))
     _setup
 }
@@ -132,6 +171,14 @@ main() {
             ;;
             delete)
                 fnToRun="_delete"
+                shift
+            ;;
+            add-folder)
+                fnToRun="_addFolder"
+                shift
+            ;;
+            delete-folder)
+                fnToRun="_deleteFolder"
                 shift
             ;;
             -f|--folders)
