@@ -93,13 +93,6 @@ removeDotfilesFolder() {
     local toDelete=${1}
     set_stow_folders "${dotfilesFolders[@]/$toDelete}"
 }
-_addFolder() {
-    addDotfilesFolder $addFolder
-}
-_deleteFolder() {
-    removeDotfilesFolder $addFolder
-}
-
 
 _add() {
     if [[ -z $addFile ]]; then echo Require the FILE argument && exit 1; fi;
@@ -141,6 +134,19 @@ _delete() {
     removeDotfilesFolder $addFolder
     stowFolders=($(echo $addFolder))
     _setup
+}
+
+_addFolder() {
+    addDotfilesFolder $addFolder
+    # Setup that folder to link the file
+    stowFolders=($(echo $addFolder))
+    _setup
+}
+_deleteFolder() {
+    removeDotfilesFolder $addFolder
+    # Remove that folder to unlink files
+    stowFolders=($(echo $addFolder))
+    _remove
 }
 
 main() {
