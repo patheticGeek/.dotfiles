@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 export STOW_DIR=$HOME/.dotfiles
+export FOLDERS_FILE=dotfiles_folders
 
 get_stow_folders() {
-    cat dotfiles_folders
+    cat $FOLDERS_FILE
 }
 set_stow_folders() {
-    echo ${@} > dotfiles_folders
+    echo ${@} > $FOLDERS_FILE
 }
 
 stowFolders="$(get_stow_folders)"
@@ -83,15 +84,22 @@ addDotfilesFolder() {
     local dotfilesFolders=$(get_stow_folders)
     if [[ $dotfilesFolders == *"${1}"* ]];
     then
-        echo ${1} already presnt in dotfiles_folders
+        echo ${1} already present in $FOLDERS_FILE
     else
         set_stow_folders "$(get_stow_folders) ${1}"
+        echo ${1} added in $FOLDERS_FILE
     fi
 }
 removeDotfilesFolder() {
     local dotfilesFolders=($(get_stow_folders))
     local toDelete=${1}
-    set_stow_folders "${dotfilesFolders[@]/$toDelete}"
+    if [[ $dotfilesFolders == *"${1}"* ]];
+    then
+        set_stow_folders "${dotfilesFolders[@]/$toDelete}"
+        echo ${1} removed from $FOLDERS_FILE
+    else
+        echo ${1} not in $FOLDERS_FILE
+    fi
 }
 
 _add() {
@@ -131,7 +139,6 @@ _delete() {
     mv $filePath $moveTo
 
     # Setup that folder once again
-    removeDotfilesFolder $addFolder
     stowFolders=($(echo $addFolder))
     _setup
 }
