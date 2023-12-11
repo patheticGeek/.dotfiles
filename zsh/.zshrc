@@ -62,8 +62,3 @@ export PATH=~/.local/share/JetBrains/Toolbox/scripts:$PATH
 
 export PATH=/opt/cuda/bin:$PATH
 export LD_LIBRARY_PATH="/opt/cuda/lib64:$LD_LIBRARY_PATH"
-
-# pnpm
-export PNPM_HOME="~/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
