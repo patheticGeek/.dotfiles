@@ -19,15 +19,10 @@ alias tree="tree -I \"$TREE_IGNORE_FOLDER\""
 
 alias emulators='emulator -list-avds'
 
-alias tailscale-up="sudo systemctl start tailscaled && sudo tailscale up"
-
 alias lzd='lazydocker'
 alias lzg='lazygit'
 
 alias c="code"
-
-alias dpzsh="doppler run -- zsh"
-alias dpr="doppler run --"
 
 alias minecraft="sudo java -jar Downloads/TLauncher-*.jar"
 
