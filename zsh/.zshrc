@@ -15,7 +15,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 ZSH_CUSTOM="$HOME/.omz-geek"
 
-plugins=(git nvm python vscode docker docker-compose adb zsh-autosuggestions)
+plugins=(git nvm python vscode docker docker-compose zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
