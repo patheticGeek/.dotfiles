@@ -12,7 +12,7 @@ local line2_start_vs="%{$fg[cyan]%}➜%B"
 local vcs_branch='$(git_prompt_info)$(git_remote_status)'
 
 if [[ "$TERM_PROGRAM" == "WarpTerminal" ]]; then
-    PROMPT="${line1_start_vs}${user_host}${current_dir}${vcs_branch}"
+    PROMPT="${line1_start_vs}${user_host}${current_dir}${vcs_branch} ${line2_start_vs}%{$reset_color%}%b "
 elif [[ "$TERM_PROGRAM" == "vscode" ]]; then
     PROMPT="${line1_start_vs}${user_host}${current_dir}${vcs_branch}
 ${line2_start_vs}%{$reset_color%}%b "
