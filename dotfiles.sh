@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export STOW_DIR=$HOME/.dotfiles
-export FOLDERS_FILE=dotfiles_folders
+export FOLDERS_FILE=$STOW_DIR/dotfiles_folders
 
 get_stow_folders() {
     cat $FOLDERS_FILE
@@ -19,6 +19,8 @@ addFile=
 
 _help() {
     echo """
+dotfiles - for managing my dotfiles
+
 COMMAND
     dotfiles [setup|remove|update] [-d|--dry]
     dotfiles [add|delete] FOLDER FILE
