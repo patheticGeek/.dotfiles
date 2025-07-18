@@ -1,0 +1,53 @@
+[colors.bright]
+black = "#565656"
+blue = "#49a4f8"
+cyan = "#99faf2"
+green = "#c0e17d"
+magenta = "#a47de9"
+red = "#ec5357"
+white = "#ffffff"
+yellow = "#f9da6a"
+
+[colors.normal]
+black = "#2e2e2e"
+blue = "#47a0f3"
+cyan = "#64dbed"
+green = "#abe047"
+magenta = "#7b5cb0"
+red = "#eb4129"
+white = "#e5e9f0"
+yellow = "#f6c744"
+
+[colors.primary]
+background = "#101421"
+foreground = "#fffbf6"
+
+[cursor]
+style = { shape = "Beam", blinking = "Off" }
+thickness = 0.25
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Iosevka SS02"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka SS02"
+style = "Bold Italic"
+
+[font.italic]
+family = "Iosevka SS02"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka SS02"
+style = "Regular"
+
+[scrolling]
+history = 50000
+
+[window]
+opacity = 0.9
+blur = true
